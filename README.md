@@ -1,11 +1,13 @@
 # Path Description Model
 
-##BART XML PATH DESCRIPTION GENERATION
+## BART XML PATH DESCRIPTION GENERATION
 
-Business Understanding
+### Business Understanding
 Elevated solutions LLC  needs a machine learning model that takes in an XML path and gives out or generates a description of the path.
-Data Understanding
+
+### Data Understanding
 The data is in .txt files whereby we had one training file and an evaluating file. They are both similar in structure though the contents of the description and xml path are unique to prevent overfitting.
+
 Data Preparation
 Our train data was collected from gridml’s public library. It was not scraped but rather manually collected to maintain integrity and remove phrases such as examples, explanations of how the for example “file name” was changed to “name” and so on. 
 
