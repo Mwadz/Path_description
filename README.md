@@ -8,7 +8,7 @@ Elevated solutions LLC  needs a machine learning model that takes in an XML path
 ### Data Understanding
 The data is in .txt files whereby we had one training file and an evaluating file. They are both similar in structure though the contents of the description and xml path are unique to prevent overfitting.
 
-Data Preparation
+### Data Preparation
 Our train data was collected from gridml’s public library. It was not scraped but rather manually collected to maintain integrity and remove phrases such as examples, explanations of how the for example “file name” was changed to “name” and so on. 
 
 The paths retained their special characters while the description special characters got dropped. Majority were commas. They had to be removed so the files could be read in csv(comma separated values) form. The files were loaded into a dataframe using the pandas library
@@ -16,7 +16,7 @@ The paths retained their special characters while the description special charac
 The columns were then given new labels. The descriptions were labelled as “target_text” while the XML paths were labelled as “input_text”.
 
 
-Modelling
+### Modelling
 I employed the use of a pre-trained bart model as the baseline model. This bart model in particular was developed by facebook. It uses both BART and transformer algorithms which are traditionally used in text summarization which essentially is what we’re trying to make our model do. Taking from the path only that which is meaningful and generating an explanation (description). 
 
 I used the simple transformers library and  the sequencer sequence class model(Seq2seq) to import the model and the Seq2seq arguments.
@@ -27,7 +27,7 @@ The model was about 1.2GB in weight which is quite heavy. The training would tak
 
 One major challenge was training while having exhausted the Google collab GPU resource. It took too long and would disconnect from runtime once it detected inactivity for a while. This was a major time waster. The use of the cuda code line in the model bypassed that issue by directing the training towards the available GPU thus increasing the speed of learning. Amazon Web Service however should be considered for long term use.
 
-Evaluation
+### Evaluation
 
 I trained it using 10 epochs. The  number of epochs is an important hyperparameter for the algorithm as it specifies the number of complete passes of the entire training dataset passing through the training or learning process of the algorithm. Simply put an epoch in machine learning means one complete pass of the training dataset through the algorithm.
 
@@ -51,9 +51,11 @@ Gridml’s description of the exact same XML path is as follows:
 This suggests that our model has a lot of potential for accuracy given enough examples, with optimum parameter tuning and computational power
 Deployment
 For now the prediction can be done directly on the notebook but I would suggest having a user interface in order to interact with the model seamlessly. The model is to be saved then loaded into the web application which can be created using the various languages and platforms.
-Conclusion
+
+### Conclusion
 The model performs a lot better than the one in phase 1 due to the cleanness, the increase in the amount of the data and the cuda code. It needs hyperparameter turing and the use of the number of epochs to data ratio discovered in order to improve accuracy and reduce running and train loss. The use of AWS cloud services could reduce the amount of training time significantly and provide the opportunity to train a whole lot more data. 
-Recommendations
+
+### Recommendations
 The use of the epoch-data ratio discovered (1250:4)
 The performance of hyperparameter tuning and the discovery of which hyperparameters are most crucial to what we’re trying to achieve
 The research and use of AWS GPU instances.
